@@ -8,6 +8,7 @@ import HeaderComponent from "./HeaderComponent";
 import SubHeaderComponent from "./SubHeaderComponent";
 import Footer from "./Footer";
 import Spinner from "./Spinner";
+import { toast } from "react-toastify";
 import NoteContext from "../contextApi/NoteContext";
 
 const Card = () => {
@@ -67,6 +68,9 @@ const Card = () => {
     const newLanguage = toggleMedium === "English" ? "Hindi" : "English";
     setDataParams({ ...dataParams, mode: newLanguage });
     setToggleMedium(newLanguage);
+    toast("आपकी भाषा का परिवर्तन सफलता पूर्वक कर दिया गया है ! 😄", {
+      position: "bottom-center",
+    });
   };
   return (
     <>
