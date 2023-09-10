@@ -25,7 +25,6 @@ const CardDetails = () => {
                 display: "flex",
                 justifyContent: "center",
                 textAlign: "center",
-                height: "7vh",
               }}
             >
               <h1>
@@ -60,20 +59,23 @@ const CardDetails = () => {
               />
             </div>
             <div
+              dangerouslySetInnerHTML={{ __html: dataOfCard.description }}
               style={{
                 display: "flex",
-                margin: "0 10px 0 10px",
+                padding: "10px",
+                flexDirection: "column",
+                justifyContent: "center",
               }}
             >
-              {dataOfCard.description}
+              {/* {dataOfCard.description} */}
             </div>
             <div
               style={{
                 display: "flex",
                 justifyContent: "end",
                 marginRight: "5px",
-                height: "8vh",
-                position: "fixed",
+                // height: "8vh",
+                // position: "fixed",
                 bottom: 0,
                 width: "100%",
                 background: "black",

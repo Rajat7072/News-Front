@@ -7,6 +7,7 @@ export const updateAllNewsDetails = async ({
   subname,
   author,
   title,
+  firstDescription,
   description,
   base64Image,
   youtubeLink,
@@ -22,6 +23,7 @@ export const updateAllNewsDetails = async ({
         subname,
         author,
         title,
+        firstDescription,
         description,
         base64Image,
         youtubeLink,
@@ -70,5 +72,6 @@ export const updateAllNewsDetails = async ({
       position: "bottom-left",
       icon: "❗",
     });
+    console.log(error);
   }
 };

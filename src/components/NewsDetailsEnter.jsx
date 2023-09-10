@@ -1,10 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { updateAllNewsDetails } from "../ApiCall/NewsApiDetails";
 import { useNavigate } from "react-router-dom";
+import JoditEditor from "jodit-react";
 
 const NewsDetailsEnter = () => {
+  const [content, SetContent] = useState("");
+  const editor = useRef(null);
   const navigate = useNavigate();
   const logPassCheck = localStorage.getItem("ADMIM_LOGIN_RAJA");
   useEffect(() => {
@@ -22,6 +25,7 @@ const NewsDetailsEnter = () => {
     subname: "",
     author: "",
     title: "",
+    firstDescription: "",
     description: "",
     base64Image: "",
     youtubeLink: "",
@@ -67,10 +71,55 @@ const NewsDetailsEnter = () => {
   };
   const handleChange = (e) => {
     setPublish({ ...publish, [e.target.name]: e.target.value });
+    console.log(publish);
+  };
+  const handleBlur = (e) => {
+    setPublish({ ...publish, description: content });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateAllNewsDetails(publish);
+    if (
+      publish.author.length === 0 ||
+      publish.base64Image.length === 0 ||
+      publish.description.length === 0 ||
+      publish.firstDescription === 0 ||
+      publish.mode.length === 0 ||
+      publish.name.length === 0 ||
+      publish.subname.length === 0 ||
+      publish.youtubeLink.length === 0 ||
+      publish.telegramLink.length === 0 ||
+      publish.title.length === 0
+    ) {
+      toast("Please Fill All The Feilds", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        icon: "😅",
+      });
+    } else if (
+      publish.firstDescription.length < 100 ||
+      publish.firstDescription.length > 120
+    ) {
+      toast("First Description should be in between 100 to 120 letters", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        icon: "😅",
+      });
+    } else {
+      console.log(publish);
+      updateAllNewsDetails(publish);
+    }
   };
   return (
     <div className="step2">
@@ -143,6 +192,30 @@ const NewsDetailsEnter = () => {
         </div>
         <div className="mb-3">
           <label htmlFor="exampleInputPassword1" className="form-label">
+            <h6>First Description</h6>
+          </label>
+          <textarea
+            type="text"
+            className="form-control"
+            id="exampleInputsubFirstDesc"
+            maxLength={120}
+            rows={5}
+            name="firstDescription"
+            value={publish.firstDescription}
+            onChange={handleChange}
+          />
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "end",
+            }}
+          >
+            {`${publish.firstDescription.length}/120`}
+          </div>
+        </div>
+        <div className="mb-3">
+          <label htmlFor="exampleInputPassword1" className="form-label">
             <h6>Image</h6>
           </label>
           <input
@@ -173,7 +246,7 @@ const NewsDetailsEnter = () => {
           <label htmlFor="exampleInputPassword1" className="form-label">
             <h6>Description</h6>
           </label>
-          <textarea
+          {/* <textarea
             type="text"
             className="form-control"
             id="exampleInputsubDesc"
@@ -182,8 +255,15 @@ const NewsDetailsEnter = () => {
             name="description"
             value={publish.description}
             onChange={handleChange}
+          /> */}
+          <JoditEditor
+            ref={editor}
+            value={content}
+            name="description"
+            onChange={(newContent) => SetContent(newContent)}
+            onBlur={handleBlur}
           />
-          <div
+          {/* <div
             style={{
               width: "100%",
               display: "flex",
@@ -191,7 +271,7 @@ const NewsDetailsEnter = () => {
             }}
           >
             {`${publish.description.length}/5000`}
-          </div>
+          </div> */}
         </div>
         <div className="mb-3">
           <label htmlFor="exampleInputPassword1" className="form-label">

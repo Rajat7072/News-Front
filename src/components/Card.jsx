@@ -38,6 +38,7 @@ const Card = () => {
       const result = await fetchAllNewsDetails(dataParams);
       setResponseApi(result);
       setLoading(false);
+      console.log(result);
     })();
   };
   useEffect(() => {
@@ -129,8 +130,10 @@ const Card = () => {
                   <div className="card-body">
                     <h5 className="card-title">{element.title}</h5>
                     <p className="card-text">
-                      {element.description.split(" ").slice(0, 20).join(" ") +
-                        "..."}
+                      {element.firstDescription
+                        .split("")
+                        .slice(0, 100)
+                        .join("") + "..."}
                     </p>
                     <Link to={`https://${element.youtubeLink}`} target="_blank">
                       For Detailed Video-YouTube

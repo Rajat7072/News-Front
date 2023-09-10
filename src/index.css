@@ -63,8 +63,6 @@ color:yellow;
   border: 2px solid black;
   margin-top: 64px;
   flex-direction: column;
-  background: wheat;
-  height: 91.4vh;
 }
 .step1{
   display: flex;
@@ -112,6 +110,7 @@ color:yellow;
   }
   .cardDetailHeader{
     margin-top: 110px;
+    width: 100%;
   }
   .step1{
     margin-top: 125px;
