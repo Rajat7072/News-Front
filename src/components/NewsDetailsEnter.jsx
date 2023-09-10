@@ -71,7 +71,7 @@ const NewsDetailsEnter = () => {
   };
   const handleChange = (e) => {
     setPublish({ ...publish, [e.target.name]: e.target.value });
-    console.log(publish);
+    // console.log(publish);
   };
   const handleBlur = (e) => {
     setPublish({ ...publish, description: content });
@@ -117,7 +117,7 @@ const NewsDetailsEnter = () => {
         icon: "😅",
       });
     } else {
-      console.log(publish);
+      //console.log(publish);
       updateAllNewsDetails(publish);
     }
   };

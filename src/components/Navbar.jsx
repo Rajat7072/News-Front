@@ -26,7 +26,7 @@ const Navbar = () => {
                   cursor: "default",
                 }}
               >
-                Agastya
+                Agastya ( अगस्त्य )
               </i>
             </b>
           </div>

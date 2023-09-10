@@ -38,7 +38,7 @@ const Card = () => {
       const result = await fetchAllNewsDetails(dataParams);
       setResponseApi(result);
       setLoading(false);
-      console.log(result);
+      //console.log(result);
     })();
   };
   useEffect(() => {
@@ -85,8 +85,7 @@ const Card = () => {
         }}
       >
         <button
-          className="btn btn-outline-dark"
-          style={{ width: "100%", color: "white" }}
+          className="btn btn-outline-dark cardLanguageButton"
           onClick={handleMine}
         >
           हिंदी भाषा में आर्टिकल पढ़ने के लिए यहां क्लिक करें

@@ -45,7 +45,7 @@ code {
   display: flex;
   text-align: center;
   justify-content: center;
-  padding: 20px;
+  padding: 15px;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -98,9 +98,27 @@ color:yellow;
 .styleButtonRight{
   margin-right: 30px;
 }
+.worldOfArticle{
+  font-size: 35px;
+  display: flex;
+  flex-direction: column;
+}
+.cardLanguageButton{
+  width: 100%;
+  color: white;
+}
 @media only screen and (max-width: 991px) {
+  .myfooter{
+    font-size: 11px;
+  }
+  .cardLanguageButton{
+    font-size: 14px;
+  }
+  .worldOfArticle{
+    font-size: 23px;
+  }
   .headingStyle{
-    margin-top: 100px;
+    margin-top: 110px;
   }
   .removeImage{
     display: none;
@@ -119,7 +137,7 @@ color:yellow;
     margin-top: 125px;
   }
   .buttonStyle{
-    margin-bottom: 90px;
+    margin-bottom: 60px;
   }
   .styleButtonLeft{
     margin-left: 17px;

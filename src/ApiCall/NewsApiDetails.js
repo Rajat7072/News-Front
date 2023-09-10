@@ -14,7 +14,7 @@ export const updateAllNewsDetails = async ({
   telegramLink,
 }) => {
   try {
-    console.log("First point of connection");
+    //console.log("First point of connection");
     const response = await axios.post(
       `${process.env.REACT_APP_URL}/api/news-details`,
       {
@@ -37,7 +37,7 @@ export const updateAllNewsDetails = async ({
     );
 
     const json_data = await response.data;
-    console.log(json_data);
+    //console.log(json_data);
     if (json_data.success === true) {
       toast("Article uploaded successfully 😄", {
         position: "top-center",
@@ -67,7 +67,7 @@ export const updateAllNewsDetails = async ({
       localStorage.clear("ADMIM_LOGIN_RAJA");
     }
   } catch (error) {
-    console.log("Some Bad Happened");
+    //console.log("Some Bad Happened");
     toast(error, {
       position: "bottom-left",
       icon: "❗",
